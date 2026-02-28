@@ -102,6 +102,11 @@ const images = [
 const countdownDiv = document.getElementById("countdown");
 const messageDiv = document.getElementById("message");
 
+
+document.addEventListener("click", () => {
+    document.getElementById("typingSound").play();
+}, { once: true });
+
 function updateCountdown() {
     const now = new Date().getTime();
     const distance = unlockDate - now;
