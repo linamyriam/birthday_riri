@@ -138,9 +138,6 @@ const countdownDiv = document.getElementById("countdown");
 const messageDiv = document.getElementById("message");
 
 
-document.addEventListener("click", () => {
-    document.getElementById("typingSound").play();
-}, { once: true });
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -210,9 +207,10 @@ function typeWriter() {
 
             messageDiv.innerHTML += messageText.charAt(i);
 
-            // 🔊 joue le son
-            sound.currentTime = 0; 
-            sound.play();
+          if (i % 2 === 0) {
+            sound.currentTime = 0;
+            sound.play().catch(() => {});
+        }
 
             i++;
             setTimeout(typing, 40);
