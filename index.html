@@ -161,14 +161,22 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// ✍️ Machine à écrire
 function typeWriter() {
     let i = 0;
+    const sound = document.getElementById("typingSound");
+
     function typing() {
         if (i < messageText.length) {
+
             messageDiv.innerHTML += messageText.charAt(i);
+
+            // 🔊 joue le son
+            sound.currentTime = 0; 
+            sound.play();
+
             i++;
             setTimeout(typing, 40);
+
         } else {
             showPhotos();
         }
@@ -190,6 +198,6 @@ function showPhotos() {
     });
 }
 </script>
-
+<audio id="typingSound" src="images/Computer-keyboard-fast(chosic.com).mp3"></audio>
 </body>
 </html>
